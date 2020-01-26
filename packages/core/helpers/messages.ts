@@ -16,3 +16,6 @@ export const INVALID_EXECUTION_CONTEXT = (
   currentContext: string,
 ) =>
   `Calling ${methodName} is not allowed in this context. Your current execution context is "${currentContext}".`;
+
+export const HTTP_LISTEN_MESSAGE = (port: number | string) =>
+  `http started on port: ${port}`;

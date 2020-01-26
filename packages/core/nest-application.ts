@@ -26,6 +26,7 @@ import { MiddlewareModule } from './middleware/middleware-module';
 import { NestApplicationContext } from './nest-application-context';
 import { Resolver } from './router/interfaces/resolver.interface';
 import { RoutesResolver } from './router/routes-resolver';
+import { HTTP_LISTEN_MESSAGE } from './helpers/messages';
 
 const { SocketModule } = optionalRequire(
   '@nestjs/websockets/socket-module',
@@ -233,6 +234,7 @@ export class NestApplication extends NestApplicationContext
     !this.isInitialized && (await this.init());
     this.httpAdapter.listen(port, ...args);
     this.isListening = true;
+    this.logger.log(HTTP_LISTEN_MESSAGE(port));
     return this.httpServer;
   }
 
